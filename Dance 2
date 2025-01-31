@@ -1,0 +1,37 @@
+//Code to be executed in Arduino IDE
+
+#include <Servo.h>
+
+#define BUZZER_PIN 13
+
+Servo rightLeg;
+Servo leftLeg;
+
+const int danceDelay = 500; // Adjust the delay for dance movements
+
+void setup() {
+  rightLeg.attach(2); // Attach right leg servo to pin 2
+  leftLeg.attach(3);  // Attach left leg servo to pin 3
+  pinMode(BUZZER_PIN, OUTPUT);
+}
+
+void loop() {
+  dance();
+  tone(BUZZER_PIN, 1000, 500); 
+  delay(1000); // Pause between dance movements
+}
+
+void dance() {
+  // Perform dance movements using servo motors
+  rightLeg.write(90); // Move right leg to 90 degrees
+  leftLeg.write(90);  // Move left leg to 90 degrees
+  delay(danceDelay);
+
+  rightLeg.write(45); // Move right leg to 45 degrees
+  leftLeg.write(135); // Move left leg to 135 degrees
+  delay(danceDelay);
+
+  rightLeg.write(135); // Move right leg to 135 degrees
+  leftLeg.write(45);   // Move left leg to 45 degrees
+  delay(danceDelay);
+} 
